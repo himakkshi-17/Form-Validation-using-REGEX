@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>Form-validation using REGEX</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<!-- style -->
+<style media="screen">
+  body{
+    background-image: url('bg4.jpg');
+    /* opacity: 0.8; */
+  }
+  h1{
+    font-family: "Comic Sans MS", cursive, sans-;
+    font-weight:bold;
+  }
+
+.form-group{
+  width: 270px;
+  align-items: center;
+  margin: 20px auto;
+  font-weight: bold;
+  color: #fff;
+}
+.submit{
+  width: 270px;
+  align-items: center;
+  margin: 20px auto;
+}
+.container{
+  max-width: 500px;
+  margin: 50 auto;
+  background: rgba(0,0,0,0.8);
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px;
+}
+
+</style>
+  </head>
+
+  <body>
+    <h1 class="text-center text-dark">Form Validation using REGEX</h1><br>
+
+    <div class="container">
+      <br>
+      <form onsubmit="return validation()">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="" value="" id="name" class="form-control">
+          <span id="nameerror" class="text-danger font-weight-bold"></span>
+        </div>
+        <div class="form-group">
+          <label>Scholar No.</label>
+          <input  title="Starts with 1" type="text" name="" value="" id="sno" class="form-control">
+          <span id="snoerror" class="text-danger font-weight-bold"></span>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="" value="" id="email" class="form-control">
+          <span id="emailerror" class="text-danger font-weight-bold"></span>
+        </div><br>
+        <div class="submit">
+
+        <input type="submit" name="" value="Submit" class=" btn btn-primary">
+
+      </div>
+      </form>
+
+          <script type="text/javascript">
+
+            function validation(){
+
+              var name = document.getElementById('name').value;
+              var sno = document.getElementById('sno').value;
+              var email = document.getElementById('email').value;
+
+              var namecheck = /^[A-Za-z. ]{3,30}$/;
+              var snocheck = /^[1][0-9]{8}$/;
+              var emailcheck = /^[A-Za-z_0-9]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z]{2,6}$/;
+
+              if(namecheck.test(name)){
+                document.getElementById('nameerror').innerHTML = " ";
+              }
+              else{
+                document.getElementById('nameerror').innerHTML = "** Name is invalid ! ";
+                return false;
+              }
+
+              if(snocheck.test(sno)){
+                document.getElementById('snoerror').innerHTML = " ";
+              }
+              else{
+                document.getElementById('snoerror').innerHTML = "** Scholar No. is invalid !";
+                return false;
+              }
+
+              if(emailcheck.test(email)){
+                document.getElementById('emailerror').innerHTML = " ";
+              }
+              else{
+                document.getElementById('emailerror').innerHTML = "** Email is invalid ! ";
+                return false;
+              }
+
+
+            }
+
+          </script>
+
+
+    </div>
+
+  </body>
+</html>
